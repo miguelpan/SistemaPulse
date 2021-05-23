@@ -31,7 +31,7 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemProdutoAction() {
-		System.out.println("menuItemProduto");
+		loadView("/gui/ProdutoList.fxml");
 	}
 	
 	@FXML
