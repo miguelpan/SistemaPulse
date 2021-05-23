@@ -16,6 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import model.services.ProdutoServices;
 
 
 public class MainViewController implements Initializable {
@@ -31,7 +32,10 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemProdutoAction() {
-		loadView("/gui/ProdutoList.fxml");
+		loadView("/gui/ProdutoList.fxml", (ProdutoListController controller) -> {
+			controller.setProdutoService(new ProdutoServices());
+			controller.updateTableView();
+		});
 	}
 	
 	@FXML
@@ -41,14 +45,14 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemAboutAction() {
-		loadView("/gui/about.fxml");
+		loadView("/gui/about.fxml", x -> {});
 	}
 		
 	@Override
 	public void initialize(URL uri, ResourceBundle rb) {
 	}
 
-	private synchronized void loadView(String absoluteName) {
+	private synchronized <T> void loadView(String absoluteName, Consumer<T> acaoInicializar) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
 			VBox newVBox = loader.load();
@@ -61,12 +65,14 @@ public class MainViewController implements Initializable {
 			mainVBox.getChildren().add(mainMenu);
 			mainVBox.getChildren().addAll(newVBox.getChildren());
 			
+			T controller = loader.getController();
+			acaoInicializar.accept(controller);
+			
+			
 		}
 		catch (IOException e) {
 			Alerts.showAlert("IOException", "Erro ao carregar a pagina", e.getMessage(), AlertType.ERROR);
 		}
-	}
-	
-	
+	}		
 	
 }
