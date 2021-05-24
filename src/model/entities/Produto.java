@@ -8,6 +8,7 @@ public class Produto implements Serializable {
 
 	private Integer id;
 	private String name;
+	private String codbarrs;
 	
 	public Produto() {
 	}
@@ -31,6 +32,14 @@ public class Produto implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getcodbarrs() {
+		return codbarrs;
+	}
+	
+	public void setcodbarrs(String codbarrs) {
+		this.codbarrs = codbarrs;
 	}
 
 	@Override
