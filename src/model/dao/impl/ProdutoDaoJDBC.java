@@ -35,7 +35,7 @@ public class ProdutoDaoJDBC implements ProdutoDao {
 				Produto obj = new Produto();
 				obj.setId       (rs.getInt("idest"));
 				obj.setName     (rs.getString("nome_produto"));
-				obj.setcodbarrs (rs.getString("codigo_barras"));
+//				obj.setcodbarrs (rs.getString("codigo_barras"));
 				return obj;
 			}
 			return null;
@@ -64,7 +64,7 @@ public class ProdutoDaoJDBC implements ProdutoDao {
 				Produto obj = new Produto();
 				obj.setId		(rs.getInt("idest"));
 				obj.setName     (rs.getString("nome_produto"));
-				obj.setcodbarrs (rs.getString("codigo_barras"));
+//				obj.setcodbarrs (rs.getString("codigo_barras"));
 				list.add(obj);
 			}
 			return list;
@@ -83,8 +83,8 @@ public class ProdutoDaoJDBC implements ProdutoDao {
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(
-				"INSERT INTO tblestoque " +
-				"(nome_produto) " +
+				"INSERT INTO tbtteste " +
+				"(nome) " +
 				"VALUES " +
 				"(?)", 
 				Statement.RETURN_GENERATED_KEYS);

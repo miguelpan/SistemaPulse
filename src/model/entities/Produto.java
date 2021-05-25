@@ -8,7 +8,7 @@ public class Produto implements Serializable {
 
 	private Integer id;
 	private String name;
-	private String codbarrs;
+//	private String codbarrs;
 	
 	public Produto() {
 	}
@@ -34,13 +34,13 @@ public class Produto implements Serializable {
 		this.name = name;
 	}
 	
-	public String getcodbarrs() {
-		return codbarrs;
-	}
-	
-	public void setcodbarrs(String codbarrs) {
-		this.codbarrs = codbarrs;
-	}
+//	public String getcodbarrs() {
+//		return codbarrs;
+//	}
+//	
+//	public void setcodbarrs(String codbarrs) {
+//		this.codbarrs = codbarrs;
+//	}
 
 	@Override
 	public int hashCode() {
