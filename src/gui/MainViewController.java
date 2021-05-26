@@ -22,14 +22,25 @@ import model.services.ProdutoServices;
 public class MainViewController implements Initializable {
 	
 	@FXML
+	private MenuItem menuItemVenda;
+	
+	@FXML
 	private MenuItem menuItemProduto;
 	
 	@FXML
 	private MenuItem menuItemFormaPag;
 	
 	@FXML
-	private MenuItem menuItemAbout;	    
+	private MenuItem menuItemAbout;	 
 	
+	@FXML
+	public void onMenuItemVendaAction() {
+		loadView("/gui/Venda.fxml", (ProdutoListController controller) -> {
+			controller.setProdutoService(new ProdutoServices());
+			controller.updateTableView();
+		});
+	}
+		
 	@FXML
 	public void onMenuItemProdutoAction() {
 		loadView("/gui/ProdutoList.fxml", (ProdutoListController controller) -> {
